@@ -11,14 +11,18 @@
 
 // Função para aparencia
 void detalhe() {
-    printf("\n==============================\n");
+    printf( "\n==========================================================================\n" );
 }
 
 // Função de movimento da Torre
 void moverTorre ( int casasTorre ) { // Função recursiva com armazenamento em pilha
     if ( casasTorre > 0 ) {
         moverTorre( casasTorre - 1);
-        printf("Movimento %d: Direita\n", casasTorre); // Imprime o movimento da peça
+        printf( "Movimento %d: Direita\n", casasTorre ); // Imprime o movimento da peça
+    }
+
+    if (casasTorre == 5) { // ajusta para o número de casas que você chamou
+        printf( "\nResumo: A torre andou %d casas para a Direita.\n", casasTorre );
     }
 }
 
@@ -27,19 +31,25 @@ void moverBispo () { // Função do bispo com loops aninhados
     int movimentoDiagonal = 5; // Movimenta 5 casas para cima e direita
      
     for ( int loopExterno = 1 ; loopExterno <= movimentoDiagonal ; loopExterno++ ) { // Início do loop externo - ( icinialização ; condição; incremento )
-        printf("Movimento %d: Cima ", loopExterno); 
+        printf( "Movimento %d: Cima ", loopExterno ); 
 
         for ( int loopInterno = 0 ; loopInterno < 1 ; loopInterno++ ){ // Início do loop interno - ( icinialização ; condição; incremento )
-            printf("Direita\n");
+            printf( "Direita\n" );
         } // Fim do loop interno
     } // Fim do loop externo
+    // Frase final resumida
+    printf( "\nResumo: O bispo andou %d casas na diagonal (Cima e Direita).\n", movimentoDiagonal );
 }
 
 // Função de movimento da Rainha
 void moverRainha ( int casasRainha ) {
     if ( casasRainha > 0 ) { // Função recursiva com armazenamento em pilha
         moverRainha ( casasRainha - 1 );
-        printf("Movimento %d: Esquerda\n", casasRainha);  
+        printf( "Movimento %d: Esquerda\n", casasRainha );  
+    }
+
+    if ( casasRainha == 8 ) { // ajusta para o número de casas que você chamou
+        printf( "\nResumo: A rainha andou %d casas para a Direita.\n", casasRainha );
     }
 }
 
@@ -47,12 +57,16 @@ void moverRainha ( int casasRainha ) {
 void moverCavalo () {  // Loops com variáveis múltiplas e condições avançadas
     for ( int vertical = 0, horizontal = 2 ; vertical <= 2 && horizontal >= 0 ; vertical++ , horizontal-- ){
         if ( vertical <= 1 ) {
-            printf("Movimento %d: Cima\n", vertical + 1 ); // Movimento vertical, 2 casas para cima
+            printf( "Movimento %d: Cima\n", vertical + 1 ); // Movimento vertical, 2 casas para cima
             continue; //  Vai pula para a próxima iteração do for
         }
         
-        if ( vertical == 2 && horizontal == 0) {
-            printf("Movimento %d: Direita\n", horizontal + 3 );
+        if ( vertical == 2 && horizontal == 0 ) {
+            printf( "Movimento %d: Direita\n", horizontal + 3 ); // +3 é apenas para deixar a numeração da impressão correta "movimento 3"
+
+            // Aqui dentro, usamos as variáveis para imprimir o resumo
+            printf( "\nResumo: O cavalo andou %d casas para cima e %d casa para a direita.\n", vertical, horizontal + 1) ; // MOstra corretamente que o cavalo andou 1 casa para a direita
+
             break; // Vai sair do loop de repetição
         }
     }
